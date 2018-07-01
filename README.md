@@ -23,7 +23,7 @@ $ ./build.sh
 
 Alternatively pull the pre-built image from Docker Hub:
 ```sh
-$ docker pull magnetikonline/acestreamserver
+$ docker pull magnetikonline/acestream-server
 ```
 
 ## Usage
