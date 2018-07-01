@@ -1,5 +1,5 @@
 # Docker Ace Stream server
-An [Ace Stream](http://www.acestream.org/) server running as a Docker container.
+An [Ace Stream](http://www.acestream.org/) server Docker image.
 - [Overview](#overview)
 - [Building](#building)
 - [Usage](#usage)
@@ -7,13 +7,13 @@ An [Ace Stream](http://www.acestream.org/) server running as a Docker container.
 
 ## Overview
 What this provides:
-- A Dockerized Ace Stream server (version `3.1.16`) on Debian 8 (Jessie).
-- Bash script to start server and publish it's HTTP API endpoint to host system.
+- Dockerized Ace Stream server (version `3.1.16`) under Debian 8 (Jessie).
+- Bash script to start server and publish HTTP API endpoint to host system.
 - Python playback script [`playstream.py`](playstream.py) instructing server to:
-	- Commence streaming of a given Ace Stream program ID.
-	- ...and (optionally) once ready start a compatible media player (e.g. [VLC](https://www.videolan.org/vlc/)) to playback the presented video stream over HTTP.
+	- Commence streaming of a given program ID.
+	- ...and (optionally) start a compatible media player (e.g. [VLC](https://www.videolan.org/vlc/)) once stream is ready.
 
-Since the Docker Ace Stream server is both controlled by, and provides a usable video stream over a single HTTP endpoint/port this should offer one of the easier methods to get Ace Stream running on unsupported operating systems such as OS X.
+Since the server is both controlled by and provides a usable video stream via a single HTTP endpoint this provides one of the easier methods to use Ace Streams on unsupported operating systems such as OS X.
 
 ## Building
 To build Docker image:
@@ -21,27 +21,27 @@ To build Docker image:
 $ ./build.sh
 ```
 
-Alternatively pull the pre-built image from Docker Hub:
+Alternatively pull a pre-built image from Docker Hub:
 ```sh
 $ docker pull magnetikonline/acestream-server
 ```
 
 ## Usage
-Start the Ace Stream server via:
+Start the server via:
 ```sh
 $ ./run.sh
 ```
 
-If using a Linux host the alternative [`run-tmpfs.sh`](run-tmpfs.sh) is recommended which mounts the server cache directory into a [temporary based `tmpfs`](run-tmpfs.sh#L12) filesystem inside the running Docker container. This saves thrashing out the stream contents to disk, which the server seems to do without control.
+Under Linux hosts the alternative [`run-tmpfs.sh`](run-tmpfs.sh) is recommended, mounting the server's cache directory into a [temporary based `tmpfs`](run-tmpfs.sh#L12) file system. This saves thrashing of the file system as stream contents is written to disk - which does not seem possible to disable via server configuration.
 
-The server will now be running with a HTTP API endpoint available at `http://127.0.0.1:6878/`:
+Server should now be running with the API endpoint available at `http://127.0.0.1:6878/`:
 
 ```sh
 $ curl http://127.0.0.1:6878/webui/api/service?method=get_version
 # {"result": {"code": 3011600, "platform": "linux", "version": "3.1.16"}, "error": null}
 ```
 
-A program ID can now be started with [`playstream.py`](playstream.py):
+A program ID can be started with [`playstream.py`](playstream.py):
 ```sh
 $ ./playstream.py --help
 usage: playstream.py [-h] --ace-stream-pid HASH [--player PLAYER] [--progress]
@@ -65,7 +65,7 @@ To start streaming a program ID of `PROGRAM_ID` and send playback to `vlc` when 
 ```sh
 $ ./playstream.py \
 	--ace-stream-pid PROGRAM_ID \
-	--player vlc \
+	--player /usr/bin/vlc \
 	--progress
 ```
 
