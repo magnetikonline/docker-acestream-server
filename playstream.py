@@ -12,7 +12,7 @@ import urllib2
 DEFAULT_SERVER_HOSTNAME = '127.0.0.1'
 DEFAULT_SERVER_PORT = 6878
 SERVER_POLL_TIME = 2
-SERVER_STATUS_ACTIVE_STREAM = 'dl'
+SERVER_STATUS_STREAM_ACTIVE = 'dl'
 
 
 def exit_error(message):
@@ -94,7 +94,7 @@ def start_stream(server_hostname,server_port,stream_pid):
 		response['playback_url']
 	)
 
-def build_stream_stats_message(response):
+def stream_stats_message(response):
 	return 'Peers: {0} // Down: {1}KB // Up: {2}KB'.format(
 		response.get('peers',0),
 		response.get('speed_down',0),
@@ -105,18 +105,18 @@ def await_playback(statistics_url):
 	while (True):
 		response = api_request(statistics_url)
 
-		if (response.get('status') == SERVER_STATUS_ACTIVE_STREAM):
+		if (response.get('status') == SERVER_STATUS_STREAM_ACTIVE):
 			# stream is ready
 			print('Ready!\n')
 			break
 
 		else:
-			print('Waiting... [{0}]'.format(build_stream_stats_message(response)))
+			print('Waiting... [{0}]'.format(stream_stats_message(response)))
 			time.sleep(SERVER_POLL_TIME)
 
-def execute_media_player(media_player_exec,playback_url):
+def execute_media_player(media_player_bin,playback_url):
 	subprocess.Popen(
-		media_player_exec.split() + [playback_url],
+		media_player_bin.split() + [playback_url],
 		stdout = subprocess.PIPE,
 		stderr = subprocess.PIPE
 	)
@@ -125,7 +125,7 @@ def stream_progress(statistics_url):
 	print('')
 	while (True):
 		print('Streaming... [{0}]'.format(
-			build_stream_stats_message(api_request(statistics_url))
+			stream_stats_message(api_request(statistics_url))
 		))
 
 		time.sleep(SERVER_POLL_TIME)
@@ -134,22 +134,22 @@ def main():
 	# read CLI arguments
 	(
 		stream_pid,
-		media_player_exec,
+		media_player_bin,
 		progress_follow,
 		server_hostname,
 		server_port
 	) = read_arguments()
 
-	print('Commence streaming of program ID [{0}]'.format(stream_pid))
+	print('Connecting to program ID [{0}]'.format(stream_pid))
 	statistics_url,playback_url = start_stream(server_hostname,server_port,stream_pid)
 
 	print('Awaiting successful playback of stream')
 	await_playback(statistics_url)
 
-	print('Playback started at: {0}'.format(playback_url))
-	if (media_player_exec is not None):
+	print('Playback started at [{0}]'.format(playback_url))
+	if (media_player_bin is not None):
 		print('Starting media player...')
-		execute_media_player(media_player_exec,playback_url)
+		execute_media_player(media_player_bin,playback_url)
 
 	if (progress_follow):
 		stream_progress(statistics_url)
