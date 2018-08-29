@@ -7,7 +7,7 @@ An [Ace Stream](http://www.acestream.org/) server Docker image.
 
 ## Overview
 What this provides:
-- Dockerized Ace Stream server (version `3.1.16`) under Debian 8 (Jessie).
+- Dockerized Ace Stream server (version `3.1.16`) running under Debian 8 (Jessie) slim.
 - Bash script to start server and publish HTTP API endpoint to host system.
 - Python playback script [`playstream.py`](playstream.py) instructing server to:
 	- Commence streaming of a given program ID.
@@ -69,7 +69,7 @@ $ ./playstream.py \
 	--progress
 ```
 
-Press <kbd>Ctrl + C</kbd> to exit.
+Send <kbd>Ctrl + C</kbd> to exit.
 
 ## Reference
 - [Ace Stream Wiki (English)](http://wiki.acestream.org/wiki/index.php/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0/en).
