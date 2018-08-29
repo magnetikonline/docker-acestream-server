@@ -8,12 +8,12 @@ An [Ace Stream](http://www.acestream.org/) server Docker image.
 ## Overview
 What this provides:
 - Dockerized Ace Stream server (version `3.1.16`) running under Debian 8 (Jessie) slim.
-- Bash script to start server and publish HTTP API endpoint to host system.
+- Bash script to start server and present HTTP API endpoint to host.
 - Python playback script [`playstream.py`](playstream.py) instructing server to:
 	- Commence streaming of a given program ID.
-	- ...and (optionally) start a compatible media player (e.g. [VLC](https://www.videolan.org/vlc/)) once stream is ready.
+	- ...and (optionally) start a compatible media player (such as [VLC](https://www.videolan.org/vlc/)) once ready.
 
-Since the server is both controlled by and provides a usable video stream via a single HTTP endpoint this provides one of the easier methods to use Ace Streams on unsupported operating systems such as OS X.
+Since server is both controlled by and provides a video stream via a single HTTP endpoint, this provides one of the easier methods to playback Ace Streams on unsupported operating systems such as OS X.
 
 ## Building
 To build Docker image:
@@ -21,7 +21,7 @@ To build Docker image:
 $ ./build.sh
 ```
 
-Alternatively pull a pre-built image from Docker Hub:
+Alternatively pull the Docker Hub image:
 ```sh
 $ docker pull magnetikonline/acestream-server
 ```
@@ -32,7 +32,7 @@ Start the server via:
 $ ./run.sh
 ```
 
-Under Linux hosts the alternative [`run-tmpfs.sh`](run-tmpfs.sh) is recommended, mounting the server's cache directory into a [temporary based `tmpfs`](run-tmpfs.sh#L12) file system. This saves thrashing of the file system as stream contents is written to disk - which does not seem possible to disable via server configuration.
+For Linux hosts the alternative [`run-tmpfs.sh`](run-tmpfs.sh) is recommended, mounting the cache directory into a [temporary based `tmpfs`](run-tmpfs.sh#L12) file system. This saves thrashing of the file system as stream contents is written to disk - which does not seem possible to disable via server launch arguments.
 
 Server should now be running with the API endpoint available at `http://127.0.0.1:6878/`:
 
