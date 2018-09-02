@@ -16,6 +16,13 @@ What this provides:
 Since server is both controlled by and provides a video stream via a single HTTP endpoint, this provides one of the easier methods to playback Ace Streams on unsupported operating systems such as OS X.
 
 ## Building
+This requires Python with version 2.7. You can check your current Python by typing:
+```sh
+$ python --version
+>> Python 2.7.14
+```
+Should higher version be installed(it is on newest OS X) use [virtualenv](https://virtualenv.pypa.io/en/stable/) or [conda](https://docs.anaconda.com/anaconda/install/) to install an environment with correct Python version.
+
 To build Docker image:
 ```sh
 $ ./build.sh
@@ -70,6 +77,16 @@ $ ./playstream.py \
 ```
 
 Send <kbd>Ctrl + C</kbd> to exit.
+
+## Troubleshooting
+### ModuleNotFoundError: No module named 'urllib2'
+```$ ./playstream.py --help
+Traceback (most recent call last):
+  File "./playstream.py", line 11, in <module>
+    import urllib2
+ModuleNotFoundError: No module named 'urllib2'
+```
+This means you tried to use Python 3 instead of Python 2.7. Please make sure to use Python 2.7 when running these scripts.
 
 ## Reference
 - [Ace Stream Wiki (English)](http://wiki.acestream.org/wiki/index.php/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0/en).
