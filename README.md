@@ -21,7 +21,7 @@ This requires Python with version 2.7. You can check your current Python by typi
 $ python --version
 >> Python 2.7.14
 ```
-Should higher version be installed(it is on newest OS X) use [virtualenv](https://virtualenv.pypa.io/en/stable/) or [conda](https://docs.anaconda.com/anaconda/install/) to install an environment with correct Python version.
+Should higher version be installed, use [virtualenv](https://virtualenv.pypa.io/en/stable/) or [conda](https://docs.anaconda.com/anaconda/install/) to install an environment with correct Python version.
 
 To build Docker image:
 ```sh
