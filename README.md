@@ -11,9 +11,9 @@ What this provides:
 - Bash script to start server and present HTTP API endpoint to host.
 - Python playback script [`playstream.py`](playstream.py) instructing server to:
 	- Commence streaming of a given program ID.
-	- ...and (optionally) start a compatible media player (such as [VLC](https://www.videolan.org/vlc/)) once ready.
+	- ...and optionally start a compatible media player (such as [VLC](https://www.videolan.org/vlc/)) to view stream.
 
-Since server is both controlled by and provides a video stream via a single HTTP endpoint, this provides one of the easier methods to playback Ace Streams on unsupported operating systems such as OS X.
+Since a single HTTP endpoint exposed from the Docker container controls the server _and_ provides the output stream, this provides one of the easier methods for playback of Ace Streams on traditionally unsupported operating systems such as OS X.
 
 ## Building
 To build Docker image:
@@ -34,8 +34,7 @@ $ ./run.sh
 
 For Linux hosts the alternative [`run-tmpfs.sh`](run-tmpfs.sh) is recommended, mounting the cache directory into a [temporary based `tmpfs`](run-tmpfs.sh#L12) file system. This saves thrashing of the file system as stream contents is written to disk - which does not seem possible to disable via server launch arguments.
 
-Server should now be running with the API endpoint available at `http://127.0.0.1:6878/`:
-
+Server will now be available from `http://127.0.0.1:6878`:
 ```sh
 $ curl http://127.0.0.1:6878/webui/api/service?method=get_version
 # {"result": {"code": 3011600, "platform": "linux", "version": "3.1.16"}, "error": null}
@@ -61,12 +60,20 @@ optional arguments:
   --port PORT           server HTTP API port, defaults to 6878
 ```
 
-To start streaming a program ID of `PROGRAM_ID` and send playback to `vlc` when ready:
+For example, to stream `PROGRAM_ID` and send playback to `vlc` when ready:
 ```sh
 $ ./playstream.py \
 	--ace-stream-pid PROGRAM_ID \
 	--player /usr/bin/vlc \
 	--progress
+
+Awaiting successful connection to stream
+Waiting... Peers: 5 // Down: 80KB // Up: 0KB
+Waiting... Peers: 40 // Down: 343KB // Up: 4KB
+Ready!
+
+Playback available at [http://127.0.0.1/XXXX]
+Starting media player...
 ```
 
 Send <kbd>Ctrl + C</kbd> to exit.

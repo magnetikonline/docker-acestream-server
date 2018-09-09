@@ -173,12 +173,12 @@ def main():
 	print('Connecting to program ID [{0}]'.format(stream_pid))
 	statistics_url,playback_url = start_stream(server_hostname,server_port,stream_pid)
 
-	print('Awaiting successful playback of stream')
+	print('Awaiting successful connection to stream')
 	if (not await_playback(watch_sigint,statistics_url)):
 		# exit early
 		return
 
-	print('Playback started at [{0}]'.format(playback_url))
+	print('Playback available at [{0}]'.format(playback_url))
 	if (media_player_bin is not None):
 		print('Starting media player...')
 		execute_media_player(media_player_bin,playback_url)
