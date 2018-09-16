@@ -68,12 +68,14 @@ $ ./playstream.py \
 	--progress
 
 Awaiting successful connection to stream
-Waiting... Peers: 5 // Down: 80KB // Up: 0KB
-Waiting... Peers: 40 // Down: 343KB // Up: 4KB
+Waiting... [Peers: 5 // Down: 80KB // Up: 0KB]
+Waiting... [Peers: 40 // Down: 343KB // Up: 4KB]
 Ready!
 
 Playback available at [http://127.0.0.1/XXXX]
 Starting media player...
+
+Streaming... [Peers: 18 // Down: 467KB // Up: 16KB]
 ```
 
 Send <kbd>Ctrl + C</kbd> to exit.
