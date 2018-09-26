@@ -20,7 +20,7 @@ def exit_error(message):
 	sys.stderr.write('Error: {0}\n'.format(message))
 	sys.exit(1)
 
-class WatchSigint:
+class WatchSigint(object):
 	_sent = None
 
 	def __init__(self):
