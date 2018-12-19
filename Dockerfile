@@ -16,7 +16,9 @@ RUN apt-get update && apt-get upgrade --yes && \
 	rm --force --recursive /var/lib/apt/lists && \
 	curl --silent "http://dl.acestream.org/linux/acestream_${VERSION}_x86_64.tar.gz" | \
 		tar --extract --gzip && \
-	mv "acestream_${VERSION}_x86_64" /opt/acestream
+	mv "acestream_${VERSION}_x86_64" /opt/acestream && \
+	echo "/opt/acestream/lib" >>/etc/ld.so.conf && \
+	/sbin/ldconfig
 
 EXPOSE 6878
 
