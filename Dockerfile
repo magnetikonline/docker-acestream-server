@@ -12,14 +12,14 @@ RUN apt-get update && apt-get upgrade --yes && \
 		python-lxml \
 		python-m2crypto \
 		python-pkg-resources && \
+	# clean up
 	apt-get clean && \
 	rm --force --recursive /var/lib/apt/lists && \
-	curl --silent "http://dl.acestream.org/linux/acestream_${ACE_STREAM_VERSION}_x86_64.tar.gz" | \
-		tar --extract --gzip && \
-	mv "acestream_${ACE_STREAM_VERSION}_x86_64" /opt/acestream && \
-	echo "/opt/acestream/lib" >>/etc/ld.so.conf && \
-	/sbin/ldconfig
+	# install server
+	curl --silent "http://acestream.org/downloads/linux/acestream_${ACE_STREAM_VERSION}_x86_64.tar.gz" | \
+		tar --extract --gzip
 
-EXPOSE 6878
+EXPOSE 6878/tcp
 
-CMD ["/opt/acestream/acestreamengine","--client-console"]
+ENTRYPOINT ["/start-engine"]
+CMD ["--client-console"]

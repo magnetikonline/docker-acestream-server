@@ -7,7 +7,7 @@ An [Ace Stream](http://www.acestream.org/) server Docker image.
 
 ## Overview
 What this provides:
-- Dockerized Ace Stream server (version `3.1.16`) running under Debian 8 (Jessie) slim.
+- Dockerized Ace Stream server (version `3.1.49`) running under Debian 8 (Jessie) slim.
 - Bash script to start server and present HTTP API endpoint to host.
 - Python playback script [`playstream.py`](playstream.py) instructing server to:
 	- Commence streaming of a given program ID.
@@ -23,7 +23,7 @@ $ ./build.sh
 
 Alternatively pull the Docker Hub image:
 ```sh
-$ docker pull magnetikonline/acestream-server:3.1.16_debian_8.7
+$ docker pull magnetikonline/acestream-server:3.1.49_debian_8.11
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ For Linux hosts the alternative [`run-tmpfs.sh`](run-tmpfs.sh) is recommended, m
 Server will now be available from `http://127.0.0.1:6878`:
 ```sh
 $ curl http://127.0.0.1:6878/webui/api/service?method=get_version
-# {"result": {"code": 3011600, "platform": "linux", "version": "3.1.16"}, "error": null}
+# {"result": {"code": 3014900, "platform": "linux", "version": "3.1.49"}, "error": null}
 ```
 
 A program ID can be started with [`playstream.py`](playstream.py):
