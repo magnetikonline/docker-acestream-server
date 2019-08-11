@@ -1,9 +1,12 @@
 #!/bin/bash -e
 
 DIRNAME=$(dirname "$0")
-DOCKER_IMAGE_NAME="magnetikonline/acestream-server"
+DOCKER_REPOSITORY=${DOCKER_REPOSITORY-"magnetikonline/acestream-server"}
 
+
+. "$DIRNAME/version"
 
 docker build \
-	--tag "$DOCKER_IMAGE_NAME" \
+	--build-arg "ACE_STREAM_VERSION=$ACE_STREAM_VERSION" \
+	--tag "$DOCKER_REPOSITORY:$ACE_STREAM_VERSION" \
 	"$DIRNAME"

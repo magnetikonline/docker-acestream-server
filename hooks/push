@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+. version
+docker push "$DOCKER_REPO:$ACE_STREAM_VERSION"

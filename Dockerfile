@@ -1,7 +1,7 @@
 FROM debian:8-slim
 LABEL maintainer="Peter Mescalchin <peter@magnetikonline.com>"
 
-ENV VERSION="3.1.16_debian_8.7"
+ARG ACE_STREAM_VERSION
 
 RUN apt-get update && apt-get upgrade --yes && \
 	apt-get install --no-install-recommends --yes \
@@ -14,9 +14,9 @@ RUN apt-get update && apt-get upgrade --yes && \
 		python-pkg-resources && \
 	apt-get clean && \
 	rm --force --recursive /var/lib/apt/lists && \
-	curl --silent "http://dl.acestream.org/linux/acestream_${VERSION}_x86_64.tar.gz" | \
+	curl --silent "http://dl.acestream.org/linux/acestream_${ACE_STREAM_VERSION}_x86_64.tar.gz" | \
 		tar --extract --gzip && \
-	mv "acestream_${VERSION}_x86_64" /opt/acestream && \
+	mv "acestream_${ACE_STREAM_VERSION}_x86_64" /opt/acestream && \
 	echo "/opt/acestream/lib" >>/etc/ld.so.conf && \
 	/sbin/ldconfig
 

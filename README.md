@@ -23,7 +23,7 @@ $ ./build.sh
 
 Alternatively pull the Docker Hub image:
 ```sh
-$ docker pull magnetikonline/acestream-server
+$ docker pull magnetikonline/acestream-server:3.1.16_debian_8.7
 ```
 
 ## Usage
