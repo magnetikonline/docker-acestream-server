@@ -17,17 +17,20 @@ Since a single HTTP endpoint exposed from the Docker container controls the serv
 
 ## Building
 To build Docker image:
+
 ```sh
 $ ./build.sh
 ```
 
 Alternatively pull the Docker Hub image:
+
 ```sh
 $ docker pull magnetikonline/acestream-server:3.1.49_debian_8.11
 ```
 
 ## Usage
 Start the server via:
+
 ```sh
 $ ./run.sh
 ```
@@ -35,12 +38,14 @@ $ ./run.sh
 For Linux hosts the alternative [`run-tmpfs.sh`](run-tmpfs.sh) is recommended, mounting the cache directory into a [temporary based `tmpfs`](run-tmpfs.sh#L12) file system. This saves thrashing of the file system as stream contents is written to disk - which does not seem possible to disable via server launch arguments.
 
 Server will now be available from `http://127.0.0.1:6878`:
+
 ```sh
 $ curl http://127.0.0.1:6878/webui/api/service?method=get_version
 # {"result": {"code": 3014900, "platform": "linux", "version": "3.1.49"}, "error": null}
 ```
 
 A program ID can be started with [`playstream.py`](playstream.py):
+
 ```sh
 $ ./playstream.py --help
 usage: playstream.py [-h] --ace-stream-pid HASH [--player PLAYER] [--progress]
@@ -61,6 +66,7 @@ optional arguments:
 ```
 
 For example, to stream `PROGRAM_ID` and send playback to `vlc` when ready:
+
 ```sh
 $ ./playstream.py \
 	--ace-stream-pid PROGRAM_ID \
