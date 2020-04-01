@@ -4,8 +4,8 @@ LABEL maintainer="Peter Mescalchin <peter@magnetikonline.com>"
 ARG ACE_STREAM_VERSION
 
 RUN DEBIAN_FRONTEND="noninteractive" \
-	apt-get update && apt-get upgrade --yes && \
-	apt-get install --no-install-recommends --yes \
+	apt-get update && apt-get --yes upgrade && \
+	apt-get --no-install-recommends --yes install \
 		curl \
 		libpython2.7 \
 		net-tools \
