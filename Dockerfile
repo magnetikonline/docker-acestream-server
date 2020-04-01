@@ -3,7 +3,8 @@ LABEL maintainer="Peter Mescalchin <peter@magnetikonline.com>"
 
 ARG ACE_STREAM_VERSION
 
-RUN apt-get update && apt-get upgrade --yes && \
+RUN DEBIAN_FRONTEND="noninteractive" \
+	apt-get update && apt-get upgrade --yes && \
 	apt-get install --no-install-recommends --yes \
 		curl \
 		libpython2.7 \
