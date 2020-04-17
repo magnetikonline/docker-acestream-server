@@ -5,6 +5,7 @@ ARG ACE_STREAM_VERSION
 
 RUN DEBIAN_FRONTEND="noninteractive" \
 	apt-get update && apt-get --yes upgrade && \
+	# install packages
 	apt-get --no-install-recommends --yes install \
 		curl \
 		libpython2.7 \
