@@ -13,7 +13,7 @@ What this provides:
 	- Commence streaming of a given program ID.
 	- ...and optionally start a compatible media player (such as [VLC](https://www.videolan.org/vlc/)) to view stream.
 
-Since a single HTTP endpoint exposed from the Docker container controls the server _and_ provides the output stream, this provides one of the easier methods for playback of Ace Streams on traditionally unsupported operating systems such as OS X.
+Since a single HTTP endpoint exposed from the Docker container controls the server _and_ provides the output stream, this provides one of the easier methods for playback of Ace Streams on traditionally unsupported operating systems such as macOS.
 
 ## Building
 To build Docker image:
@@ -87,8 +87,7 @@ Streaming... [Peers: 18 // Down: 467KB // Up: 16KB]
 Send <kbd>Ctrl + C</kbd> to exit.
 
 ## Reference
-- [Ace Stream Wiki (English)](http://wiki.acestream.org/wiki/index.php/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0/en).
-- Binary downloads: http://wiki.acestream.org/wiki/index.php/Download.
-- Ubuntu install notes: http://wiki.acestream.org/wiki/index.php/Install_Ubuntu.
-- HTTP API usage: http://wiki.acestream.org/wiki/index.php/Engine_HTTP_API.
-- `playstream.py` routines inspired by: https://github.com/jonian/acestream-launcher.
+- Binary downloads: https://wiki.acestream.org/Download
+- Ubuntu install notes: https://wiki.acestream.org/Install_Ubuntu
+- HTTP API usage: https://wiki.acestream.org/Engine_HTTP_API
+- `playstream.py` routines inspired by: https://github.com/jonian/acestream-launcher
