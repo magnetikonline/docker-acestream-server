@@ -1,12 +1,16 @@
 # Docker Ace Stream server
+
 An [Ace Stream](http://www.acestream.org/) server Docker image.
+
 - [Overview](#overview)
 - [Building](#building)
 - [Usage](#usage)
 - [Reference](#reference)
 
 ## Overview
+
 What this provides:
+
 - Dockerized Ace Stream server (version `3.1.49`) running under Debian 8 (Jessie) slim.
 - Bash script to start server and present HTTP API endpoint to host.
 - Python playback script [`playstream.py`](playstream.py) instructing server to:
@@ -16,6 +20,7 @@ What this provides:
 Since a single HTTP endpoint exposed from the Docker container controls the server _and_ provides the output stream, this provides one of the easier methods for playback of Ace Streams on traditionally unsupported operating systems such as macOS.
 
 ## Building
+
 To build Docker image:
 
 ```sh
@@ -29,6 +34,7 @@ $ docker pull magnetikonline/acestream-server:3.1.49_debian_8.11
 ```
 
 ## Usage
+
 Start the server via:
 
 ```sh
@@ -87,6 +93,7 @@ Streaming... [Peers: 18 // Down: 467KB // Up: 16KB]
 Send <kbd>Ctrl + C</kbd> to exit.
 
 ## Reference
+
 - Binary downloads: https://wiki.acestream.org/Download
 - Ubuntu install notes: https://wiki.acestream.org/Install_Ubuntu
 - HTTP API usage: https://wiki.acestream.org/Engine_HTTP_API
