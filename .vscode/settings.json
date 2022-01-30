@@ -1,6 +1,7 @@
 {
 	"python.formatting.provider": "black",
 	"[python]": {
-		"editor.formatOnSave": true
-	}
+		"editor.formatOnSave": true,
+		"editor.formatOnSaveMode": "file",
+	},
 }
