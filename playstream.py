@@ -10,7 +10,6 @@ import sys
 import time
 import urllib.request
 
-
 DEFAULT_SERVER_HOSTNAME = "127.0.0.1"
 DEFAULT_SERVER_PORT = 6878
 SERVER_POLL_TIME = 2
@@ -140,7 +139,7 @@ def execute_media_player(media_player_bin, playback_url):
 
 
 def stream_progress(watch_sigint, statistics_url):
-    print("")
+    print()
     while True:
         print(f"Streaming... [{stream_stats_message(api_request(statistics_url))}]")
 
