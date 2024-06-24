@@ -6,7 +6,7 @@ ARG ACE_STREAM_VERSION
 RUN DEBIAN_FRONTEND="noninteractive" \
 	apt-get update && apt-get --yes upgrade && \
 	# install packages
-	apt-get --no-install-recommends --yes install \
+	apt-get --no-install-recommends --yes --force-yes install \
 		curl \
 		libpython2.7 \
 		net-tools \
@@ -18,7 +18,7 @@ RUN DEBIAN_FRONTEND="noninteractive" \
 	apt-get clean && \
 	rm --force --recursive /var/lib/apt/lists && \
 	# install server
-	curl --silent "http://acestream.org/downloads/linux/acestream_${ACE_STREAM_VERSION}_x86_64.tar.gz" | \
+	curl --silent "http://download.acestream.media/linux/acestream_${ACE_STREAM_VERSION}_x86_64.tar.gz" | \
 		tar --extract --gzip
 
 EXPOSE 6878/tcp
